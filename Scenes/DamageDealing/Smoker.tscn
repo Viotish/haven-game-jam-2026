@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://m42mqjg2fak2"]
+
+[ext_resource type="PackedScene" uid="uid://bsi1epxyqckba" path="res://Scenes/DamageDealing/DamageDealer.tscn" id="1_s5c4c"]
+[ext_resource type="Script" uid="uid://bk6xp38agwi8u" path="res://Scripts/DamageDealing/Smoker.gd" id="2_iofjy"]
+[ext_resource type="Texture2D" uid="uid://bdlrv3i3pjydl" path="res://Assets/Tilesets/Pipes.png" id="3_2p4up"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g2xg"]
+size = Vector2(16, 48)
+
+[sub_resource type="Gradient" id="Gradient_n18mn"]
+offsets = PackedFloat32Array(0, 0.81900454, 0.94570136)
+colors = PackedColorArray(0.5211406, 0.5211406, 0.5211405, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3qova"]
+gradient = SubResource("Gradient_n18mn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s65hf"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(7.495, 0, 1)
+angle_min = -89.99999
+angle_max = 90.000015
+gravity = Vector3(0, -100.925, 0)
+color_ramp = SubResource("GradientTexture1D_3qova")
+
+[sub_resource type="Animation" id="Animation_ubh3b"]
+resource_name = "Appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_adqdy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15845"]
+_data = {
+&"Appear": SubResource("Animation_ubh3b"),
+&"RESET": SubResource("Animation_adqdy")
+}
+
+[node name="Smoker" unique_id=533933209 instance=ExtResource("1_s5c4c")]
+script = ExtResource("2_iofjy")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1898371781]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_5g2xg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=647615181]
+position = Vector2(0, 8)
+texture = ExtResource("3_2p4up")
+region_enabled = true
+region_rect = Rect2(16, 48, 16, 16)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2" unique_id=243724053]
+modulate = Color(0.60784316, 1, 0.14901961, 0.7647059)
+self_modulate = Color(1, 1, 1, 0)
+amount = 40
+trail_lifetime = 0.23
+process_material = SubResource("ParticleProcessMaterial_s65hf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1550799647]
+libraries/ = SubResource("AnimationLibrary_15845")
+
+[node name="Timer" type="Timer" parent="." index="4" unique_id=699191385]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

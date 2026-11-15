@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dwupdyjflm4ev"]
+
+[ext_resource type="PackedScene" uid="uid://bsi1epxyqckba" path="res://Scenes/DamageDealing/DamageDealer.tscn" id="1_6uhyh"]
+[ext_resource type="Script" uid="uid://6yy27sneslpp" path="res://Scripts/DamageDealing/PopUpSpikes.gd" id="2_gd3ep"]
+[ext_resource type="Texture2D" uid="uid://q0pktmphublr" path="res://Assets/DamageDealer/PopUpSpikes.png" id="3_woevd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uhyh"]
+size = Vector2(14, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5i86"]
+atlas = ExtResource("3_woevd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7vgh"]
+atlas = ExtResource("3_woevd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pmtj"]
+atlas = ExtResource("3_woevd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1cr5"]
+atlas = ExtResource("3_woevd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnd6s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5i86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7vgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pmtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1cr5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="PopUpSpike" unique_id=533933209 instance=ExtResource("1_6uhyh")]
+script = ExtResource("2_gd3ep")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1898371781]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_6uhyh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=1308459765]
+sprite_frames = SubResource("SpriteFrames_fnd6s")
+frame = 3
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="." index="2" unique_id=2079668885]
+wait_time = 1.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bqkf5fmcmn2l0"]
+
+[ext_resource type="TileSet" uid="uid://bwm2dq7q620sv" path="res://Assets/GodotAssets/EverythingTileSet.tres" id="1_j4j1x"]
+
+[node name="Level00" type="Node2D" unique_id=781965699]
+
+[node name="Layers" type="Node2D" parent="." unique_id=389151222]
+
+[node name="BG" type="TileMapLayer" parent="Layers" unique_id=1412399055]
+modulate = Color(0.6627451, 0.6627451, 0.6627451, 1)
+z_index = 3
+tile_set = ExtResource("1_j4j1x")
+
+[node name="FG" type="TileMapLayer" parent="Layers" unique_id=912016036]
+z_index = 4
+tile_set = ExtResource("1_j4j1x")
+
+[node name="Pipes" type="TileMapLayer" parent="Layers" unique_id=1151985379]
+z_index = 4
+tile_set = ExtResource("1_j4j1x")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Layers" unique_id=1838440111]
+color = Color(0, 0, 0, 1)
+energy = 0.62
+blend_mode = 2

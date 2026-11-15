@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://cuq0ll1tbajjp"]
+
+[ext_resource type="Script" uid="uid://cerf34v7johc0" path="res://Scripts/Player/Player.gd" id="1_ft8w5"]
+[ext_resource type="Texture2D" uid="uid://bmy7gbr6j8due" path="res://Assets/Player/PlayerSetTest.png" id="3_h54ih"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ude3g"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ude3g"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmcll"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wape"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t26db"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8w5"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h54ih"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5acl"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg6k"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u84n"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk5o5"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_825xp"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji083"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kmp4"]
+atlas = ExtResource("3_h54ih")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5acl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ude3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmcll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wape")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t26db")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8w5")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h54ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5acl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u84n")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk5o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_825xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji083")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kmp4")
+}],
+"loop": true,
+"name": &"movement",
+"speed": 7.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ft8w5"]
+offsets = PackedFloat32Array(0.024590164, 0.78688526, 1)
+colors = PackedColorArray(0.16924527, 0.1692453, 0.16924527, 0.6392157, 0.3852459, 0.3852459, 0.3852459, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h54ih"]
+gradient = SubResource("Gradient_ft8w5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ude3g"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -10, 0)
+color_ramp = SubResource("GradientTexture1D_h54ih")
+
+[sub_resource type="Gradient" id="Gradient_h54ih"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ude3g"]
+gradient = SubResource("Gradient_h54ih")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8086957, 0.18695652)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ft8w5"]
+radius = 7.0
+
+[node name="Player" type="CharacterBody2D" unique_id=94384610]
+z_index = 5
+collision_layer = 3
+script = ExtResource("1_ft8w5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=846461896]
+shape = SubResource("CircleShape2D_ude3g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=496348693]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_i5acl")
+animation = &"movement"
+frame_progress = 0.1506263
+
+[node name="FallAnimTime" type="Timer" parent="AnimatedSprite2D" unique_id=136465851]
+wait_time = 0.2
+one_shot = true
+
+[node name="ShotgunParticles" type="Node2D" parent="AnimatedSprite2D" unique_id=639968325]
+
+[node name="Smoke1" type="GPUParticles2D" parent="AnimatedSprite2D/ShotgunParticles" unique_id=46811339]
+position = Vector2(3.5, 2.57)
+process_material = SubResource("ParticleProcessMaterial_ude3g")
+
+[node name="Smoke2" type="GPUParticles2D" parent="AnimatedSprite2D/ShotgunParticles" unique_id=2074012558]
+position = Vector2(5.13, 2.57)
+process_material = SubResource("ParticleProcessMaterial_ude3g")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1762693872]
+zoom = Vector2(5, 5)
+
+[node name="RecoilJoint" type="Node2D" parent="." unique_id=1575612078]
+
+[node name="RecoilDir" type="Node2D" parent="RecoilJoint" unique_id=1241327403]
+position = Vector2(-64, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1914010859]
+energy = 0.6
+texture = SubResource("GradientTexture2D_ude3g")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1835789446]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1167335426]
+shape = SubResource("CircleShape2D_ft8w5")
+
+[node name="CameraJoint" type="Node2D" parent="." unique_id=1939077702]
+
+[node name="Pos" type="Node2D" parent="CameraJoint" unique_id=1392824389]
+position = Vector2(16, 0)
+
+[node name="CamHolder" type="Node2D" parent="CameraJoint/Pos" unique_id=1698803567]
+position = Vector2(-16, 0)
+
+[connection signal="timeout" from="AnimatedSprite2D/FallAnimTime" to="." method="_on_fall_anim_time_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dr7svp7wwadyr"]
+
+[ext_resource type="PackedScene" uid="uid://bsi1epxyqckba" path="res://Scenes/DamageDealing/DamageDealer.tscn" id="1_fjb0d"]
+[ext_resource type="Texture2D" uid="uid://btb02c18150s3" path="res://Assets/DamageDealer/SawSet.png" id="2_acsc3"]
+[ext_resource type="Script" uid="uid://dlltsqt367f2t" path="res://Scripts/DamageDealing/saw.gd" id="2_mpp3b"]
+[ext_resource type="Texture2D" uid="uid://byx6yw5kjfd5r" path="res://Assets/DamageDealer/SawSetFlip.png" id="3_mpp3b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acsc3"]
+radius = 16.03122
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cb35"]
+atlas = ExtResource("2_acsc3")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwik7"]
+atlas = ExtResource("3_mpp3b")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d8k4"]
+atlas = ExtResource("2_acsc3")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raefo"]
+atlas = ExtResource("3_mpp3b")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2iy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cb35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwik7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d8k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raefo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Saw" unique_id=533933209 instance=ExtResource("1_fjb0d")]
+collision_mask = 4
+script = ExtResource("2_mpp3b")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1898371781]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_acsc3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=1603931179]
+sprite_frames = SubResource("SpriteFrames_k2iy4")
+frame_progress = 0.9751386

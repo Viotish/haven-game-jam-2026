@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b81vlj2u46mcc"]
+
+[ext_resource type="Script" uid="uid://cvs22wxxo2nls" path="res://Scripts/DamageDealing/Cannon.gd" id="1_nokpb"]
+[ext_resource type="Texture2D" uid="uid://btnve8t5majs1" path="res://Assets/DamageDealer/Cannon.png" id="2_iov43"]
+
+[node name="Cannon" type="Node2D" unique_id=2078078726]
+z_index = 5
+script = ExtResource("1_nokpb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1762930657]
+texture = ExtResource("2_iov43")
+
+[node name="ProjectileSPawn" type="Node2D" parent="." unique_id=1811221227]
+position = Vector2(-11.07, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=1404003840]
+wait_time = 2.0
+
+[node name="Target" type="Node2D" parent="." unique_id=1300989298]
+z_index = 4
+position = Vector2(-71.11, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bqorv1mo54ltk"]
+
+[ext_resource type="Texture2D" uid="uid://ba85j8plbxb83" path="res://Assets/Objects/LanternSet.png" id="1_8jk8t"]
+[ext_resource type="Script" uid="uid://c1by7b7gnj0u7" path="res://Scripts/Objects/Lantern.gd" id="2_ppprw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfsuo"]
+atlas = ExtResource("1_8jk8t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h156g"]
+atlas = ExtResource("1_8jk8t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn2vb"]
+atlas = ExtResource("1_8jk8t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p32cl"]
+atlas = ExtResource("1_8jk8t")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ab6gd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfsuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h156g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn2vb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p32cl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_wkjmn"]
+offsets = PackedFloat32Array(0, 0.69056606)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_680ok"]
+gradient = SubResource("Gradient_wkjmn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="Lantern" type="AnimatedSprite2D" unique_id=1686591193]
+z_index = 4
+sprite_frames = SubResource("SpriteFrames_ab6gd")
+frame_progress = 0.73690295
+script = ExtResource("2_ppprw")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1273772568]
+scale = Vector2(1.325, 1.325)
+color = Color(0.8, 0.5568628, 0, 1)
+texture = SubResource("GradientTexture2D_680ok")

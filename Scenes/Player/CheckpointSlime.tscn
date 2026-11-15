@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cwi3hleg1gxtr"]
+
+[ext_resource type="Texture2D" uid="uid://xhr23krwwm0d" path="res://Assets/Player/CheckpointSet.png" id="1_t18t2"]
+[ext_resource type="Script" uid="uid://b1nbygchhc75o" path="res://Scripts/Player/CheckpointSlime.gd" id="1_xtiso"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtiso"]
+atlas = ExtResource("1_t18t2")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaib4"]
+atlas = ExtResource("1_t18t2")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dph2"]
+atlas = ExtResource("1_t18t2")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_my77n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtiso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaib4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dph2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_j3oag"]
+offsets = PackedFloat32Array(0, 0.4301887)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y67j7"]
+gradient = SubResource("Gradient_j3oag")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="CheckpointSlime" type="Node2D" unique_id=1950304038]
+z_index = 4
+script = ExtResource("1_xtiso")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1844049666]
+sprite_frames = SubResource("SpriteFrames_my77n")
+frame_progress = 0.4741961
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1111826660]
+position = Vector2(4.7683716e-07, 9.536743e-07)
+scale = Vector2(1.203125, 1.1875)
+color = Color(0, 0.7543013, 7.70092e-07, 1)
+energy = 1.8
+texture = SubResource("GradientTexture2D_y67j7")

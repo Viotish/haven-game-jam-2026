@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dwswph6g8gle"]
+
+[ext_resource type="FontFile" uid="uid://butj6phh5iorx" path="res://Assets/UI/Fonts/Cairopixel.ttf" id="1_ht3bo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3umkw"]
+font = ExtResource("1_ht3bo")
+font_size = 291
+
+[node name="Endend" type="Node2D" unique_id=1993179460]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=401300159]
+offset_right = 2177.0
+offset_bottom = 1424.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=199432038]
+offset_right = 1923.0
+offset_bottom = 1086.0
+text = "THE END"
+label_settings = SubResource("LabelSettings_3umkw")
+horizontal_alignment = 1
+vertical_alignment = 1

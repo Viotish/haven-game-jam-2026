@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c1i2g3jo7wgrv"]
+
+[ext_resource type="Script" uid="uid://cskh7t7vnm3fh" path="res://Scripts/Levels/SceneChanger.gd" id="1_sp8rc"]
+
+[sub_resource type="Gradient" id="Gradient_sp8rc"]
+offsets = PackedFloat32Array(0.46415094, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sp8rc"]
+gradient = SubResource("Gradient_sp8rc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgl8c"]
+size = Vector2(183.5, 236.5)
+
+[node name="SceneChanger" type="Node2D" unique_id=454613172]
+script = ExtResource("1_sp8rc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=857154502]
+z_index = 3
+offset_left = -425.0
+offset_top = -158.0
+offset_right = 151.0
+offset_bottom = 97.0
+texture = SubResource("GradientTexture1D_sp8rc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1354849000]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1625378769]
+position = Vector2(47.75, -30.75)
+shape = SubResource("RectangleShape2D_kgl8c")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

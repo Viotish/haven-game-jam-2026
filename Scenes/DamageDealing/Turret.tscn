@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://1gw4tootkngb"]
+
+[ext_resource type="Script" uid="uid://b2lgkx36tni46" path="res://Scripts/DamageDealing/Turret.gd" id="1_erxew"]
+[ext_resource type="Texture2D" uid="uid://b42wf8yyo6jxl" path="res://Assets/DamageDealer/TurretBarrel.png" id="2_l8smy"]
+[ext_resource type="Texture2D" uid="uid://4pd1yyiu8bin" path="res://Assets/DamageDealer/TurretBody.png" id="3_kl41s"]
+[ext_resource type="Texture2D" uid="uid://bgigogqqrauk" path="res://Assets/DamageDealer/TurretJoint.png" id="4_s8u6n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yrww4"]
+radius = 229.3687
+
+[node name="Turret" type="Node2D" unique_id=378296732]
+z_index = 4
+script = ExtResource("1_erxew")
+
+[node name="BarrelJoint" type="Node2D" parent="." unique_id=1724409342]
+position = Vector2(0, -3)
+
+[node name="Barrel" type="Sprite2D" parent="BarrelJoint" unique_id=1199389560]
+position = Vector2(0, -3)
+texture = ExtResource("2_l8smy")
+offset = Vector2(0, -7)
+
+[node name="Node2D" type="Node2D" parent="BarrelJoint/Barrel" unique_id=970310592]
+position = Vector2(0, -16)
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1177005806]
+position = Vector2(0, -8)
+texture = ExtResource("3_kl41s")
+
+[node name="Joint" type="Sprite2D" parent="." unique_id=857842559]
+position = Vector2(0, -3)
+texture = ExtResource("4_s8u6n")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=114582134]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1606968677]
+shape = SubResource("CircleShape2D_yrww4")
+
+[node name="Timer" type="Timer" parent="." unique_id=647142350]
+wait_time = 1.5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dydfstrg5w75g"]
+
+[ext_resource type="Script" uid="uid://dwdcaq4m1eh77" path="res://Scripts/Player/ShotgunStuff/Pellet.gd" id="1_330et"]
+[ext_resource type="Texture2D" uid="uid://cny8ihx26uxyh" path="res://Assets/Player/ShotgunPellet.png" id="2_opir3"]
+
+[sub_resource type="Gradient" id="Gradient_qc8ti"]
+offsets = PackedFloat32Array(0.024590164, 0.74590164, 0.97540987)
+colors = PackedColorArray(0.9019608, 0.5803922, 0, 1, 0.45840502, 0.45840508, 0.45840502, 0.5058824, 0.45882353, 0.45882353, 0.45882353, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jnrid"]
+gradient = SubResource("Gradient_qc8ti")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cexur"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1.725, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_jnrid")
+
+[sub_resource type="Gradient" id="Gradient_330et"]
+offsets = PackedFloat32Array(0, 0.012048192, 0.22289157)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_opir3"]
+gradient = SubResource("Gradient_330et")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Pellet" type="CharacterBody2D" unique_id=1121237711]
+z_index = 4
+script = ExtResource("1_330et")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965218246]
+texture = ExtResource("2_opir3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1663805611]
+amount = 12
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_cexur")
+
+[node name="DesPos" type="Node2D" parent="." unique_id=734887991]
+position = Vector2(64, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=253285012]
+color = Color(1, 0.44313726, 0, 1)
+texture = SubResource("GradientTexture2D_opir3")

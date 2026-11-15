@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://fpyrledwvpyp"]
+
+[ext_resource type="Script" uid="uid://dmx0wfoymsljb" path="res://Scripts/Player/ShotgunStuff/Bullets.gd" id="1_j6s5d"]
+
+[sub_resource type="Animation" id="Animation_sgtta"]
+resource_name = "FadeInAway"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_knt8t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2blv"]
+_data = {
+&"FadeInAway": SubResource("Animation_sgtta"),
+&"RESET": SubResource("Animation_knt8t")
+}
+
+[node name="Bullets" type="CharacterBody2D" unique_id=334601099]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+script = ExtResource("1_j6s5d")
+
+[node name="Joint" type="Node2D" parent="." unique_id=992433487]
+rotation = -0.34906584
+
+[node name="DirPos" type="Node2D" parent="Joint" unique_id=447359383]
+position = Vector2(32, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1213867390]
+libraries/ = SubResource("AnimationLibrary_e2blv")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
